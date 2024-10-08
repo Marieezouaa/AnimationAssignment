@@ -45,7 +45,7 @@ class _ScaryscreenState extends State<Scaryscreen> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/bookshefbg.png"),
+            image: AssetImage("assets/images/" + backgroundPlaceholder),
             fit: BoxFit.cover,
           ),
         ),
