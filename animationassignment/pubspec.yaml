@@ -71,6 +71,7 @@ flutter:
     - assets/images/jackolantern.png
     - assets/images/rat.png
     - assets/images/skull.png
+    - assets/images/Empty.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

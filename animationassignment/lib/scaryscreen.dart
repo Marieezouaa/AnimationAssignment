@@ -49,21 +49,23 @@ class _ScaryscreenState extends State<Scaryscreen> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-
-            Image.asset(
-              "assets/images/" + item1,
-              width: 300,
-            ),
-
-            // Text(
-            //   'Name: $petName',
-            //   style: TextStyle(fontSize: 20.0),
-            // )
+        child: GridView(
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            mainAxisSpacing: 60.0,
+          ),
+          children: [
+            Image.asset("assets/images/" + item1),
+            Image.asset("assets/images/" + item2),
+            Image.asset("assets/images/" + item3),
+            Image.asset("assets/images/" + item4),
+            Image.asset("assets/images/" + item5),
+            Image.asset("assets/images/" + item6),
+            Image.asset("assets/images/" + item8),
+            Image.asset("assets/images/" + item9),
           ],
-        ),
+        )
       ),
     );
   }
