@@ -5,20 +5,20 @@ import 'dart:async';
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: DigitalPetApp(),
+    home: Scaryscreen(),
   ));
 }
 
-class DigitalPetApp extends StatefulWidget {
-  const DigitalPetApp({super.key});
+class Scaryscreen extends StatefulWidget {
+  const Scaryscreen({super.key});
 
   @override
-  State<DigitalPetApp> createState() {
-    return _DigitalPetAppState();
+  State<Scaryscreen> createState() {
+    return _ScaryscreenState();
   }
 }
 
-class _DigitalPetAppState extends State<DigitalPetApp> {
+class _ScaryscreenState extends State<Scaryscreen> {
   String petName = "Pickels";
   int happinessLevel = 50;
   int hungerLevel = 50;
@@ -213,45 +213,19 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
     }
   }
 
-  List<ElevatedButton> _buildButtons() {
-    List<ElevatedButton> buttonList = [];
-
-    if (_countdown != 0) {
-      buttonList.add(
-        ElevatedButton(
-          onPressed: _playWithPet,
-          child: const Text('Play with Your Pet'),
-        ),
-      );
-      buttonList.add(
-        ElevatedButton(
-          onPressed: _feedPet,
-          child: const Text('Feed Your Pet'),
-        ),
-      );
-    } else {
-      buttonList.add(
-        ElevatedButton(
-          onPressed: () {
-            if (happinessLevel > 70) {
-              _now = "Winner";
-            } else if (happinessLevel >= 30 && happinessLevel <= 70) {
-              _now = "Meh";
-            } else {
-              _now = "GAME OVER";
-            }
-            _now = '$petName is $mood\n Current Timer: $_countdown';
-
-            _restart();
-            _playWithPet();
-            _feedPet();
-          },
-          child: const Text('Try Again'),
-        ),
-      );
-    }
-
-    return buttonList;
+  Widget calculatorButton(String imagePath, void Function()? buttonFunction) {
+    return Container(
+        width: 100,
+        height: 100,
+        padding: const EdgeInsets.all(0),
+        child: ElevatedButton(
+          onPressed: buttonFunction,
+          style: ElevatedButton.styleFrom(
+            shape: const ContinuousRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(30))),
+          ),
+          child: const Text(""),
+        ));
   }
 
   //END OF STYLES
@@ -316,7 +290,6 @@ class _DigitalPetAppState extends State<DigitalPetApp> {
               style: const TextStyle(fontSize: 20.0),
             ),
             const SizedBox(height: 32.0),
-            ..._buildButtons(),
           ],
         ),
       ),
