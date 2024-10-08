@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:animationassignment/imageButtons.dart';
 import 'dart:async';
-
-void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Scaryscreen(),
-  ));
-}
 
 class Scaryscreen extends StatefulWidget {
   const Scaryscreen({super.key});
