@@ -26,8 +26,8 @@ class _ScaryscreenState extends State<Scaryscreen> {
   int red = 255;
   int green = 255;
   int blue = 255;
-  String imageplaceholder = "parkbg.png";
-  String petplaceholder = "petimage.png";
+  String backgroundPlaceholder = "parkbg.png";
+  String petImagePlaceholder = "petimage.png";
   String _now = "";
   Timer? _everySecond;
   int _countdown = 10;
@@ -81,16 +81,16 @@ class _ScaryscreenState extends State<Scaryscreen> {
   void _updateMood() {
     if (happinessLevel > 70) {
       mood = "Happy";
-      petplaceholder = "coolcat.png";
-      imageplaceholder = "dolphinbg.png";
+      petImagePlaceholder = "coolcat.png";
+      backgroundPlaceholder = "dolphinbg.png";
     } else if (happinessLevel >= 30 && happinessLevel <= 70) {
       mood = "Neutral";
-      petplaceholder = "petimage.png";
-      imageplaceholder = "parkbg.png";
+      petImagePlaceholder = "petimage.png";
+      backgroundPlaceholder = "parkbg.png";
     } else {
       mood = "Unhappy";
-      petplaceholder = "angrypetimage.png";
-      imageplaceholder = "explosionbg.png";
+      petImagePlaceholder = "angrypetimage.png";
+      backgroundPlaceholder = "explosionbg.png";
     }
   }
 
@@ -213,7 +213,7 @@ class _ScaryscreenState extends State<Scaryscreen> {
     }
   }
 
-  Widget calculatorButton(String imagePath, void Function()? buttonFunction) {
+  Widget imageButtons(String imagePath, void Function()? buttonFunction) {
     return Container(
         width: 100,
         height: 100,
@@ -255,7 +255,7 @@ class _ScaryscreenState extends State<Scaryscreen> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/" + imageplaceholder),
+            image: AssetImage("assets/images/" + backgroundPlaceholder),
             fit: BoxFit.cover,
           ),
         ),
@@ -268,7 +268,7 @@ class _ScaryscreenState extends State<Scaryscreen> {
             ),
 
             Image.asset(
-              "assets/images/" + petplaceholder,
+              "assets/images/" + petImagePlaceholder,
               width: 300,
               color: Color.fromRGBO(red, green, blue, 1),
               colorBlendMode: BlendMode.modulate,
