@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animationassignment/imageButtons.dart';
 import 'dart:async';
+import 'package:just_audio/just_audio.dart';
 
 class Scaryscreen extends StatefulWidget {
   const Scaryscreen({super.key});
@@ -13,6 +14,11 @@ class Scaryscreen extends StatefulWidget {
 }
 
 class _ScaryscreenState extends State<Scaryscreen> {
+  //audio
+  final AudioPlayer _effectPlayer = AudioPlayer();
+  bool _isJumpScare = false;
+  bool _showSuccess = false;
+
   //images
   String backgroundPlaceholder = "bookshelfbg.png";
   String item1 = "books.png";
@@ -26,6 +32,11 @@ class _ScaryscreenState extends State<Scaryscreen> {
   String item9 = "skull.png";
 
   //END OF STYLES
+  Future<void> _playEffect(String asset) async {
+    await _effectPlayer.setAsset(asset);
+    _effectPlayer.play();
+  }
+  //to call use "_playEffect('assets/jumpscare.mp3');""
 
   @override
   Widget build(BuildContext context) {
