@@ -33,9 +33,8 @@ class _ScaryscreenState extends State<Scaryscreen> {
   String item8 = "rat.png";
   String item9 = "skull.png";
 
-
   //END OF TIMER RELATED FUNCTIONS
-
+  buttonFunction() {}
   //BEGINNING OF STYLES
   Shadow _setShadow(double pointOne, double pointTwo, Color color) {
     return Shadow(
@@ -43,7 +42,6 @@ class _ScaryscreenState extends State<Scaryscreen> {
         offset: Offset(pointOne, pointTwo),
         color: color);
   }
-
 
   Widget imageButtons(String imagePath, void Function()? buttonFunction) {
     return Container(
@@ -94,6 +92,7 @@ class _ScaryscreenState extends State<Scaryscreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // imageButtons("assets/images/bookshelfbg.png",   buttonFunction,),
 
             Image.asset(
               "assets/images/" + item1,
