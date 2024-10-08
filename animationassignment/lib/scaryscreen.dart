@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animationassignment/imageButtons.dart';
-import 'package:just_audio/just_audio.dart';
 import 'dart:async';
+import 'package:just_audio/just_audio.dart';
 
 class Scaryscreen extends StatefulWidget {
   const Scaryscreen({super.key});
@@ -14,6 +14,11 @@ class Scaryscreen extends StatefulWidget {
 }
 
 class _ScaryscreenState extends State<Scaryscreen> {
+  //audio
+  final AudioPlayer _effectPlayer = AudioPlayer();
+  bool _isJumpScare = false;
+  bool _showSuccess = false;
+
   //images
   String backgroundPlaceholder = "bookshelfbg.png";
   String item1 = "books.png";
@@ -27,37 +32,11 @@ class _ScaryscreenState extends State<Scaryscreen> {
   String item9 = "skull.png";
 
   //END OF STYLES
-
-  Widget buttonFunction(String imagePath) {
-    String chosenImage = "";
-    String correctImage = "assets/images/" + item1;
-    return InkWell(
-      onTap: () {
-        chosenImage = imagePath;
-
-        if (chosenImage == correctImage) {
-          print("Button Works");
-        } else {
-          //play audio
-        }
-      },
-      child: Stack(
-        children: [
-          Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-              ),
-              borderRadius: BorderRadius.circular(47.0),
-            ),
-            width: 402, //change this
-            height: 250, //change this
-          ),
-        ],
-      ),
-    );
+  Future<void> _playEffect(String asset) async {
+    await _effectPlayer.setAsset(asset);
+    _effectPlayer.play();
   }
+  //to call use "_playEffect('assets/jumpscare.mp3');""
 
   @override
   Widget build(BuildContext context) {
@@ -74,29 +53,31 @@ class _ScaryscreenState extends State<Scaryscreen> {
         backgroundColor: Colors.transparent,
       ),
       body: Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/" + backgroundPlaceholder),
-              fit: BoxFit.cover,
-            ),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/" + backgroundPlaceholder),
+            fit: BoxFit.cover,
           ),
-          child: GridView(
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                mainAxisSpacing: 60.0,
-              ),
-              children: [
-                buttonFunction("assets/images/$item1"),
-                buttonFunction("assets/images/$item2"),
-                buttonFunction("assets/images/$item3"),
-                buttonFunction("assets/images/$item4"),
-                buttonFunction("assets/images/$item5"),
-                buttonFunction("assets/images/$item6"),
-                buttonFunction("assets/images/$item8"),
-                buttonFunction("assets/images/$item9"),
-              ])),
+        ),
+        child: GridView(
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            mainAxisSpacing: 60.0,
+          ),
+          children: [
+            Image.asset("assets/images/" + item1),
+            Image.asset("assets/images/" + item2),
+            Image.asset("assets/images/" + item3),
+            Image.asset("assets/images/" + item4),
+            Image.asset("assets/images/" + item5),
+            Image.asset("assets/images/" + item6),
+            Image.asset("assets/images/" + item8),
+            Image.asset("assets/images/" + item9),
+          ],
+        )
+      ),
     );
   }
 }
