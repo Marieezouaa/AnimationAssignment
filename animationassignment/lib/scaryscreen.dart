@@ -95,7 +95,7 @@ class _ScaryscreenState extends State<Scaryscreen> {
             // imageButtons("assets/images/bookshelfbg.png",   buttonFunction,),
 
             Image.asset(
-              "assets/images/" + item1,
+              "assets/images/bookshelfbg.png",
               width: 300,
               color: Color.fromRGBO(red, green, blue, 1),
               colorBlendMode: BlendMode.modulate,
